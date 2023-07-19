@@ -55,7 +55,7 @@ function showResultsTable(results) {
 
   document.getElementById('results').appendChild(table);
 
-  // Clear input field and button
+  // Clear input field
   document.getElementById('acronymInput').value = '';
 }
 
@@ -74,4 +74,7 @@ function showSuggestionForm(acronym) {
   });
 
   const container = document.getElementById('results');
+  container.appendChild(suggestionText);
+  container.appendChild(meaningInput);
+  container.appendChild(submitButton);
 }
