@@ -123,3 +123,28 @@ function showSuggestionForm(acronym) {
   container.appendChild(submitButton);
 }
 
+function submitSuggestion(acronym, suggester, meaning) {
+  // Send a POST request to the API
+  fetch('/api/suggest', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ acronym: acronym, suggester: suggester, meaning: meaning }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        const container = document.getElementById('results');
+        // Clear the container
+        container.innerHTML = '';
+        // Create and display the success message
+        const successText = document.createElement('p');
+        successText.innerText = `Thank you for your suggestion. You suggested that ${acronym} means: ${meaning}.`;
+        container.appendChild(successText);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
