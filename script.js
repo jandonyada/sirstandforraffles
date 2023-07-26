@@ -1,10 +1,18 @@
+// This code waits for the DOM to be fully loaded and ready for manipulation
 document.addEventListener('DOMContentLoaded', () => {
+  // It selects the HTML element with the ID 'searchForm' and assigns it to the 'searchForm' variable
   const searchForm = document.getElementById('searchForm');
+
+  // It adds an event listener to the 'submit' event of the 'searchForm'
   searchForm.addEventListener('submit', event => {
+    // Prevents the default form submission behavior, which would cause a page reload
     event.preventDefault();
+
+    // Calls the function 'searchAcronym()' to handle the form submission and perform the desired action
     searchAcronym();
   });
 });
+
 
 function searchAcronym() {
   const input = document.getElementById('acronymInput').value.trim().toUpperCase();
