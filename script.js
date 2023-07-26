@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const searchButton = document.getElementById('searchButton');
-  searchButton.addEventListener('click', searchAcronym);
+  const searchForm = document.getElementById('searchForm');
+  searchForm.addEventListener('submit', event => {
+    event.preventDefault();
+    searchAcronym();
+  });
 });
 
 function searchAcronym() {
@@ -63,6 +66,8 @@ function showSuggestionForm(acronym) {
   const suggestionText = document.createElement('p');
   suggestionText.innerText = `Sorry, no matches were found for ${acronym}. Can you provide a suggestion?`;
 
+  const form = document.createElement('form');
+
   // Create the div for the name input and label
   const nameDiv = document.createElement('div');
   nameDiv.className = 'input-div';  // Apply the CSS class
@@ -103,6 +108,7 @@ function showSuggestionForm(acronym) {
 
   const submitButton = document.createElement('button');
   submitButton.innerText = 'Submit';
+  submitButton.setAttribute('type', 'submit');
   submitButton.disabled = true;
 
   const enableSubmitButton = () => {
@@ -112,15 +118,18 @@ function showSuggestionForm(acronym) {
   nameInput.addEventListener('input', enableSubmitButton);
   meaningInput.addEventListener('input', enableSubmitButton);
 
-  submitButton.addEventListener('click', () => {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
     submitSuggestion(acronym, nameInput.value.trim(), meaningInput.value.trim());
   });
 
+  form.appendChild(suggestionText);
+  form.appendChild(nameDiv);  // Append the name div
+  form.appendChild(suggestionDiv);  // Append the suggestion div
+  form.appendChild(submitButton);
+
   const container = document.getElementById('results');
-  container.appendChild(suggestionText);
-  container.appendChild(nameDiv);  // Append the name div
-  container.appendChild(suggestionDiv);  // Append the suggestion div
-  container.appendChild(submitButton);
+  container.appendChild(form);
 }
 
 function submitSuggestion(acronym, suggester, meaning) {
