@@ -27,6 +27,7 @@
 
       #results {
         margin-top: 50px;
+        color: white; /* change the text color to white */
       }
 
       table {
@@ -37,8 +38,25 @@
       th,
       td {
         padding: 10px;
-        border: 1px solid white;  /* change the border color to white */
+        border: 1px solid white; /* change the border color to white */
         color: white; /* change the text color to white */
+      }
+
+      .input-label {
+        display: block; /* Change the labels to block elements */
+        color: white;
+        text-align: center; /* Align the labels to the center */
+      }
+
+      .input-field {
+        width: 10%; /* Make the inputs take up the full width of their container */
+        color: white;
+        background: transparent;
+        border: 1px solid white;
+      }
+
+      .input-div {
+        margin-bottom: 10px; /* Add some space between the divs */
       }
     </style>
   </head>
@@ -47,9 +65,7 @@
       <h1>Sir Standfor Raffles</h1>
       <h2>Singapore uses a lot of acronyms. Find out what they stand for.</h2>
       <input type="text" id="acronymInput" placeholder="Enter an acronym" />
-      <button id="searchButton">
-        What This Stands For
-      </button>
+      <button id="searchButton">What This Stands For</button>
       <div id="results"></div>
     </div>
 

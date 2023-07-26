@@ -63,18 +63,63 @@ function showSuggestionForm(acronym) {
   const suggestionText = document.createElement('p');
   suggestionText.innerText = `Sorry, no matches were found for ${acronym}. Can you provide a suggestion?`;
 
+  // Create the div for the name input and label
+  const nameDiv = document.createElement('div');
+  nameDiv.className = 'input-div';  // Apply the CSS class
+
+  const nameLabel = document.createElement('label');
+  nameLabel.innerText = 'Your name';
+  nameLabel.className = 'input-label';
+
+  const nameInput = document.createElement('input');
+  nameInput.setAttribute('type', 'text');
+  nameInput.setAttribute('placeholder', 'Enter your name');
+  nameInput.setAttribute('title', 'Your name');
+  nameInput.required = true;
+  nameInput.className = 'input-field';
+
+  // Append the name label and input to the name div
+  nameDiv.appendChild(nameLabel);
+  nameDiv.appendChild(nameInput);
+
+  // Create the div for the suggestion input and label
+  const suggestionDiv = document.createElement('div');
+  suggestionDiv.className = 'input-div';  // Apply the CSS class
+
+  const suggestionLabel = document.createElement('label');
+  suggestionLabel.innerText = 'Your suggestion';
+  suggestionLabel.className = 'input-label';
+
   const meaningInput = document.createElement('input');
   meaningInput.setAttribute('type', 'text');
-  meaningInput.setAttribute('placeholder', 'Enter the meaning');
+  meaningInput.setAttribute('placeholder', 'Enter your suggestion');
+  meaningInput.setAttribute('title', 'Enter your suggestion');
+  meaningInput.required = true;
+  meaningInput.className = 'input-field';
+
+  // Append the suggestion label and input to the suggestion div
+  suggestionDiv.appendChild(suggestionLabel);
+  suggestionDiv.appendChild(meaningInput);
 
   const submitButton = document.createElement('button');
   submitButton.innerText = 'Submit';
+  submitButton.disabled = true;
+
+  const enableSubmitButton = () => {
+    submitButton.disabled = !(nameInput.value && meaningInput.value);
+  };
+
+  nameInput.addEventListener('input', enableSubmitButton);
+  meaningInput.addEventListener('input', enableSubmitButton);
+
   submitButton.addEventListener('click', () => {
-    submitSuggestion(acronym, meaningInput.value.trim());
+    submitSuggestion(acronym, nameInput.value.trim(), meaningInput.value.trim());
   });
 
   const container = document.getElementById('results');
   container.appendChild(suggestionText);
-  container.appendChild(meaningInput);
+  container.appendChild(nameDiv);  // Append the name div
+  container.appendChild(suggestionDiv);  // Append the suggestion div
   container.appendChild(submitButton);
 }
+
