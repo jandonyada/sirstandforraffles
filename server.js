@@ -4,10 +4,10 @@ const cors = require('cors');
 
 const app = express();
 const pool = new Pool({
-  user: 'donyadajan',
-  host: 'localhost',
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
   database: 'known_initialisms',
-  password: '',
+  password: process.env.DB_PASSWORD,
   port: 5432,
 });
 
