@@ -1,64 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sir Standfor Raffles</title>
+    <title>Sir Standfor Raffles</title> 
     <link rel="icon" href="images/ssr-favicon.png" />
     <style>
       /* CSS styles for the hero banner and input section */
       /* Add your custom styling here */
 
       body {
+        /* Removes any default margins/paddings to ensure a more consistent layout */
         margin: 0;
         padding: 0;
+
+        /* set font and font family */
         font-family: Arial, sans-serif;
-        background: url("images/Sir Stamford Raffles.jpg") no-repeat center
-          top fixed;
+
+        /* Applying background image to the body */
+        /* Using the "Sir Stamford Raffles.jpg" image from the "images" folder. Ensure background image doesn't repeat; positions image horizontally-centered and vertically-top; fixes image in place so it doesn't scroll with content */
+        background: url("images/Sir Stamford Raffles.jpg") no-repeat center top fixed;
+
+        /* Ensures the background image covers the entire body, adjusting size as needed to maintain aspect ratio and completely cover the `body` element */
         background-size: cover;
       }
 
-      h1,
+
+      h1, /* color not specified here, but is inherited from h2's color*/
       h2 {
         color: white;
       }
 
+      /* Styling for the container holding the content */
       .container {
-        text-align: center;
-        margin-top: 100px;
-        padding-top: 50px;
+        text-align: center; /* Center-align the contents horizontally */
+        margin-top: 100px; /* Add top margin for spacing */
+        padding-top: 50px; /* Add top padding for spacing */
       }
-
+      
+      /* Styling for the results section */
       #results {
-        margin-top: 50px;
+        margin-top: 50px; /* Add top margin for spacing */
         color: white; /* change the text color to white */
       }
 
+      /* Styling for tables */
       table {
-        margin: 20px auto;
-        border-collapse: collapse;
+        margin: 20px auto; /* Center-align the table horizontally */
+        border-collapse: collapse; /* Collapse borders for a cleaner table layout */
       }
 
+      /* Styling for table header cells and table data cells */
       th,
       td {
-        padding: 10px;
+        padding: 10px; /* Add padding around the content */
         border: 1px solid white; /* change the border color to white */
         color: white; /* change the text color to white */
       }
 
+      /* Styling for label elements within input divs */
       .input-label {
-        display: block; /* Change the labels to block elements */
-        color: white;
+        display: block; /* Change labels to block elements for proper alignment */
+        color: white; /* change text colour to white */
         text-align: center; /* Align the labels to the center */
       }
 
+      /* Styling for input fields */
       .input-field {
         width: 10%; /* Make the inputs take up the full width of their container */
         color: white;
-        background: transparent;
-        border: 1px solid white;
+        background: transparent; /* Set a transparent background */
+        border: 1px solid white; /* Add a white border with 1px thickness */
       }
 
+      /* Add bottom margin for spacing between divs */
       .input-div {
-        margin-bottom: 10px; /* Add some space between the divs */
+        margin-bottom: 10px; /* Add spacing between divs */
       }
     </style>
   </head>
@@ -76,21 +91,22 @@
 
     gtag("config", "G-18MQ2Q2301");
   </script>
-  <body>
-    <div class="container">
-      <h1>Sir Standfor Raffles</h1>
-      <h2>Singapore uses a lot of acronyms. Find out what they stand for.</h2>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background: url('images/Sir Stamford Raffles.jpg') no-repeat center top fixed; background-size: cover;"> <!-- Adding the same styles to the body as defined above -->
+  <div class="container">
+    <h1>Sir Standfor Raffles</h1>
+    <h2>Singapore uses a lot of acronyms. Find out what they stand for.</h2> 
 
-      <!-- Start of the form -->
-      <form id="searchForm">
-        <input type="text" id="acronymInput" placeholder="Enter an acronym" />
-        <button id="searchButton" type="submit">What This Stands For</button>
-      </form>
-      <!-- End of the form -->
+    <!-- Start of the form -->
+    <form id="searchForm">
+      <input type="text" id="acronymInput" placeholder="Enter an acronym" />
+      <button id="searchButton" type="submit">What This Stands For</button>
+    </form>
+    <!-- End of the form -->
 
-      <div id="results"></div>
-    </div>
+    <div id="results"></div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
+
 </html>
